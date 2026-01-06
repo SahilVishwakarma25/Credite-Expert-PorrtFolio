@@ -117,7 +117,9 @@ header {
 }
 
 .logo {
-  height: 100px;
+  position: absolute;
+  left: 10px;
+  height: 70px;
   border-radius: 50%;
   align-items: flex-start;
   margin-left: 30px;
@@ -216,10 +218,11 @@ footer {
 }
 /* Navigation Bar */
 .nav-container{
+  position: relative;
    display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 40px;
+  justify-content: space-around;
+  padding: 24px 40px;
 }
 .navbar {
   position: fixed;
@@ -228,6 +231,17 @@ footer {
   background: #000000;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.nav-links li{
+  margin: 0 30px;
+  
+}
+.nav-links li a{
+  color: white;
+}
+.nav-links{
+  list-style: none;
+
 }
 
 
@@ -582,6 +596,11 @@ body {
   .about-hero h1 {
     font-size: 2.2rem;
   }
+  .logo{
+    height:50px;
+
+  }
+
 }
 @media (max-width: 490px) {
   .logo{
