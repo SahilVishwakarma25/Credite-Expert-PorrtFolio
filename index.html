@@ -6,7 +6,12 @@
     <title>Credit Expert | Financial Advisor & Counsellor</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body >
+    <div style="position: fixed;top: 50%;">
+      <img src="images/whatsapp_3991765.png" class="logo" >
+    </div>
+
+
     <header class="navbar">
   <div class="nav-container">
     <img src="images/Gemini_Generated_Image_z98rd4z98rd4z98r.png" class="logo" />
@@ -17,26 +22,58 @@
         <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#plans" class="nav-link">Plans</a>
           <ul class="dropdown-menu">
-        <li><a href="web-design.html">Web Design</a></li>
-        <li><a href="app-development.html">App Development</a></li>
+        <li><a href="individiual.html"> Individual</a></li>
+        <li><a href="commercial.html">Commercial</a></li>
       </ul>
         </li>
         <li><a href="blogs.html" class="nav-link">Blogs</a></li>
       </ul>
     </nav>
+   
+        <div class="hamburger" id="hamburger">
+  ☰
+</div>
 
     
   </div>
 </header>
+<!-- Mobile Navigation Drawer -->
+<div class="mobile-nav" id="mobileNav">
+  <span class="close-btn" id="closeNav">✖</span>
+
+  <a href="#home-section">Home</a>
+  <a href="#about">About Us</a>
+  <a href="#services">Services</a>
+
+  <div class="mobile-dropdown">
+    <span>Plans ▾</span>
+    <a href="individiual.html">Individual</a>
+    <a href="commercial.html" style="margin-left: 4rem;">Commercial</a>
+  </div>
+
+  <a href="blogs.html">Blogs</a>
+</div>
+
 
    
-    <section class="about-hero" style="margin-top:6rem;">
+    <section class="about-hero" style="margin-top:6rem;display: flex;">
+       <div class="logoDiv">
+           <a href=""> <img class="logo2" src="images/instagram_408758.png" alt=""></a>
+      <a href=""> <img class="logo2" src="images/youtube_3256012.png" alt=""></a>
+      <a href=""> <img class="logo2" src="images/facebook_3536394.png" alt=""></a>
+
+        </div>
       <div class="container">
-        <h1>Empowering Your Financial Future</h1>
+        <h1>Empower Your Financial Future</h1>
         <p>
           At <span>Credit Expert</span>, we bridge the gap between financial
           hurdles and your dreams.
         </p>
+      </div>
+      <div>
+        <img src="images/girl-image.avif" style="height:300px; margin-right: 10px;
+        border-radius: 20%;" alt="">
+
       </div>
     </section>
 
@@ -66,8 +103,8 @@
             <p>Reliable Solutions</p>
           </div>
           <div class="stat-card">
-            <h3>State-wide</h3>
-            <p>Partner Network</p>
+            <h3>6500+</h3>
+            <p>Clients</p>
           </div>
         </div>
       </div>
@@ -268,10 +305,15 @@
       </form>
 
       <h2 style="margin-top: 30px">Know What People Say About Us</h2>
-      <div
-        id="reviewsList"
-        style="margin-top: 2rem; display: flex; justify-content: center"
-      ></div>
+      <div id="reviewsWrapper" style="justify-content: center;">
+  <button id="prevBtn">◀</button>
+
+  <div id="reviewsList"></div>
+
+  <button id="nextBtn">▶</button>
+</div>
+
+     
     </section>
 
     <footer style="display: flex;justify-content: space-between;">
@@ -301,6 +343,9 @@
 
        </div>
     </footer>
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+    
     <script defer src="script.js"></script>
     <!-- Toast Notification -->
     <div id="toast" class="toast"></div>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Commercial Credit Subscription</title>
+    <style>
+      :root {
+        --primary-dark: #1a2a3a;
+        --accent-blue: #007bff;
+        --border-color: #e0e0e0;
+        --bg-light: #f8f9fa;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(45deg, #dededef2, #474747);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      /* Container & Animation */
+      .commercial-plan {
+        background: #fff;
+        width: 100%;
+        max-width: 450px;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--border-color);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease-out;
+      }
+
+      .commercial-plan.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Header */
+      .header {
+        border-bottom: 2px solid var(--primary-dark);
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+      }
+
+      .header h2 {
+        margin: 0;
+        color: var(--primary-dark);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 1.4rem;
+      }
+
+      /* Pricing */
+      .price-box {
+        margin-bottom: 30px;
+      }
+
+      .starting-at {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0;
+      }
+
+      .amount {
+        font-size: 2.2rem;
+        font-weight: bold;
+        color: var(--primary-dark);
+      }
+
+      .disclaimer {
+        font-size: 0.8rem;
+        color: #888;
+        font-style: italic;
+        margin-top: 5px;
+      }
+
+      /* Feature List */
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 30px 0;
+      }
+
+      .feature-item {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      .feature-item:last-child {
+        border-bottom: none;
+      }
+
+      .feature-item::before {
+        content: "▶";
+        color: var(--accent-blue);
+        font-size: 0.8rem;
+        margin-right: 15px;
+      }
+
+      /* CTA Button */
+      .cta-btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background: var(--primary-dark);
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 4px;
+        transition: background 0.3s;
+      }
+
+      .cta-btn:hover {
+        background: #2c3e50;
+      }
+      .main-title {
+        color: #002d62;
+        font-size: 28px;
+        margin-bottom: 30px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body style="display: flex; flex-direction: column">
+    <div>
+      <h1 class="main-title" style="text-align: center;">
+        Our service Subscription Plan for Individual <br />
+        Commercials
+        
+      </h1>
+    </div>
+    <div style="display: flex;justify-content: space-evenly; position: relative;">
+         <div class="commercial-plan" id="planCard">
+      <div class="header">
+        <h2>CIBIL MSME Rank (CMR) Improvement</h2>
+      </div>
+
+      <div class="price-box">
+        <p class="starting-at">Service starts from</p>
+        <div class="amount">₹29,999/-</div>
+ <p class="disclaimer">
+          *Final cost depends on credit profile & number of accounts
+        </p>
+      </div>
+
+      <ul class="feature-list">
+        <li class="feature-item">Credit Health Checkup</li>
+        <li class="feature-item">Account Issue Resolution</li>
+        <li class="feature-item">Cibil MSME Rank (CMR) Improvement</li>
+        <li class="feature-item">6 Month Access Report</li>
+      </ul>
+
+      <a href="#" class="cta-btn">Enquire for Commercial Plan</a>
+    </div>
+    <div >
+        <img src="images/commerical-image.jpeg" style="height:30rem;margin-top: 10px;">
+    </div>
+
+    </div>
+
+   
+
+    <script>
+      // Simple entrance animation on load
+      window.onload = () => {
+        document.getElementById("planCard").classList.add("active");
+      };
+    </script>
+  </body>
+</html>
