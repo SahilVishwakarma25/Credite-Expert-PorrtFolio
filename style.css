@@ -233,7 +233,7 @@ footer {
   position: relative;
    display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content:space-evenly;
   padding: 24px 40px;
 }
 .navbar {

@@ -11,6 +11,12 @@
         --border-color: #e0e0e0;
         --bg-light: #f8f9fa;
       }
+      html{
+          overflow-x: hidden;
+        width: 100%;
+
+      }
+      
 
       body {
         font-family: Arial, sans-serif;
@@ -20,6 +26,8 @@
         align-items: center;
         min-height: 100vh;
         margin: 0;
+        overflow-x: hidden;
+        width: 100%;
       }
 
       /* Container & Animation */
@@ -130,6 +138,18 @@
         margin-bottom: 30px;
         font-weight: bold;
       }
+      @media (max-width: 480px) {
+        .commercial-img img{
+          display: none;
+
+        }
+        .commercial-plan{
+          margin: 0 10px;
+          padding: 25px;
+        }
+
+}
+      
     </style>
   </head>
   <body style="display: flex; flex-direction: column">
@@ -163,7 +183,7 @@
 
       <a href="#" class="cta-btn">Enquire for Commercial Plan</a>
     </div>
-    <div >
+    <div  class="commercial-img">
         <img src="images/commerical-image.jpeg" style="height:30rem;margin-top: 10px;">
     </div>
 
