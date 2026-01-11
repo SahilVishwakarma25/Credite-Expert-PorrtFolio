@@ -151,3 +151,20 @@ const closeNav = document.getElementById("closeNav");
 
 hamburger?.addEventListener("click", () => mobileNav.classList.add("active"));
 closeNav?.addEventListener("click", () => mobileNav.classList.remove("active"));
+
+/* Gsap scrolling animation */
+const sections = document.querySelectorAll(".section");
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+sections.forEach(section => observer.observe(section));
+

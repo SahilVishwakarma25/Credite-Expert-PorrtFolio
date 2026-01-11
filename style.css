@@ -1,4 +1,4 @@
-*{
+* {
   box-sizing: border-box;
 }
 body {
@@ -10,7 +10,7 @@ body {
   margin: 0;
   background-color: #f5f8fa;
   color: #333;
-   overflow-x: hidden;
+  overflow-x: hidden;
 }
 :root {
   --primary-blue: #002d62;
@@ -29,7 +29,7 @@ body {
 }
 html {
   scroll-behavior: smooth;
-   overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 h2 {
@@ -183,14 +183,13 @@ section {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 #reviewsList {
-   width: 320px;
+  width: 320px;
   height: 360px;
   position: relative;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 input,
@@ -219,22 +218,35 @@ footer {
   background: #000000;
   color: white;
   padding: 20px;
+  width: 100%;
 }
+.section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .logo2 {
   height: 32px;
   width: 32px;
 }
-.location{
+.location {
   height: 25px;
   width: 25px;
 }
 /* Navigation Bar */
-.nav-container{
+.nav-container {
   position: relative;
-   display: flex;
+  display: flex;
   align-items: center;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   padding: 24px 40px;
+  height: 79px;
 }
 .navbar {
   position: fixed;
@@ -242,28 +254,24 @@ footer {
   width: 100%;
   background: #000000;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-  .contact-us{
-     background-color: rgb(255, 255, 255);
-     color: black;
-     width: 40%;
-     margin: 40px auto;;
-     border-radius: 10px;
-
-  } 
-.nav-links li{
+.contact-us {
+  background-color: rgb(255, 255, 255);
+  color: black;
+  width: 40%;
+  margin: 40px auto;
+  border-radius: 10px;
+}
+.nav-links li {
   margin: 0 30px;
-  
 }
-.nav-links li a{
+.nav-links li a {
   color: white;
 }
-.nav-links{
+.nav-links {
   list-style: none;
-
 }
-
 
 .container {
   max-width: 1000px;
@@ -305,7 +313,6 @@ footer {
 }
 
 .plan-body {
- 
   flex-grow: 1; /* Ensures all cards stay same height */
   background-color: #e8e8e8;
   display: flex;
@@ -352,11 +359,11 @@ footer {
   .pricing-grid {
   }
   .plan-body p {
-  margin: 7px 0;
-  font-size: 12px;
-  font-weight: bold;
-  color: #000;
-}
+    margin: 7px 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+  }
 
   .plan-card {
     background: white;
@@ -365,6 +372,14 @@ footer {
     flex-direction: column;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
+}
+
+.main-title {
+    color: #002d62;
+    font-size: 28px;
+    margin-top: 4.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
 }
 .service-list {
   list-style: none;
@@ -614,7 +629,6 @@ body {
   padding: 40px 0;
   background: #1a2a6c;
   color: white;
-
 }
 .nav-links li .dropdown-menu {
   position: absolute;
@@ -664,10 +678,10 @@ body {
   position: relative;
 }
 
-.logoDiv{
+.logoDiv {
   position: absolute;
   right: 7rem;
-  top :7.5rem;
+  top: 2.5rem;
 }
 
 /* Responsive Styles */
@@ -679,45 +693,43 @@ body {
   .about-hero h1 {
     font-size: 2.2rem;
   }
-  .logo{
-    height:50px;
-
+  .logo {
+    height: 50px;
   }
-    .logoDiv{
-      position: absolute;
+  .logoDiv {
+    position: absolute;
     right: 34px;
     top: 7rem;
-}
-
+  }
 }
 @media (max-width: 490px) {
-  .logo{
+  .logo {
     height: 50px;
     margin-left: -10px;
   }
-  .logoDiv{
-      position: absolute;
+  .logoDiv {
+    position: absolute;
     right: 34px;
     top: 7rem;
+  }
+  .creditExpert{
+    margin-left: 3rem !important;
+  }
+  .contact-us {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    width: 12rem;
+    margin: 40px auto;
+  }
 }
-.contact-us{
-   background-color: rgb(255, 255, 255);
-     color: black;
-     width: 12rem;
-     margin: 40px auto;
 
-}
-   
-
-  } 
-
-  #reviewForm {
-    width: 80%;
-    background-color: #c08a11;
-    padding: 10px 0;
-    margin: 20px auto;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+#reviewForm {
+  width: 80%;
+  background-color: #c08a11;
+  padding: 10px 0;
+  margin: 20px auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .review-card {
   width: 100%;
@@ -726,14 +738,12 @@ body {
   border-radius: 16px;
   padding: 16px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 
   position: absolute;
   top: 0;
   left: 0;
 }
-  
- 
 
 /* ---------- Mobile Navigation ---------- */
 
@@ -793,10 +803,9 @@ body {
   font-size: 16px;
   margin-top: 8px;
 }
-.mobile-dropdown a:hover{
+.mobile-dropdown a:hover {
   background-color: #f9f9f9;
   color: rgb(142, 142, 0);
-
 }
 
 /* Show mobile menu */
@@ -835,7 +844,7 @@ body {
   border-radius: 16px;
   padding: 16px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 
   position: absolute;
   top: 0;

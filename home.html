@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Mask Image</title>
+
+  <style>
+    .img1 {
+      width: 300px;
+
+      -webkit-mask-image: url("images/Gemini_Generated_Image_ns81gsns81gsns81.png");
+      mask-image: url("images/Gemini_Generated_Image_ns81gsns81gsns81.png");
+
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+
+      -webkit-mask-size: contain;
+      mask-size: contain;
+
+      -webkit-mask-position: center;
+      mask-position: center;
+    }
+  </style>
 </head>
 <body>
-    
+
+  <img class="img1" src="images/tree.jpg" alt="Tree Image">
+
 </body>
 </html>
