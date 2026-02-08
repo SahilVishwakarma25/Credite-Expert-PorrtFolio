@@ -6,10 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const fileInput = document.getElementById("imageInput");
   const fileLabel = document.getElementById("fileLabel");
 
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
   const API_URL = "http://localhost:5000/reviews";
 
   let reviews = [];
   let currentIndex = 0;
+  const VISIBLE = 3; // how many cards visible
 
   /* ================= TOAST ================= */
   function showToast(message, type = "success") {
@@ -24,11 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => toast.classList.remove("show"), 3000);
   }
 
-  /* ================= STARS ================= */
+  /* ================= STAR RATING ================= */
   stars.forEach(star => {
     star.addEventListener("click", () => {
       const value = star.dataset.value;
       ratingInput.value = value;
+
       stars.forEach(s =>
         s.classList.toggle("filled", s.dataset.value <= value)
       );
@@ -51,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
 
       if (!ratingInput.value) {
-        showToast("Please select a rating!", "error");
+        showToast("Please select rating!", "error");
         return;
       }
 
@@ -63,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!res.ok) throw new Error("Upload failed");
 
-        showToast("✅ Review uploaded successfully!");
+        showToast("✅ Review uploaded!");
         form.reset();
         stars.forEach(s => s.classList.remove("filled"));
         fileLabel.textContent = "Upload Image";
@@ -83,63 +88,65 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!reviews.length) return;
 
       currentIndex = 0;
-      renderReview(currentIndex, "right");
+      renderReviews("right");
     } catch (err) {
       console.error(err);
     }
   }
 
-  /* ================= GSAP CAROUSEL ================= */
-  function renderReview(index, direction) {
-    const r = reviews[index];
+  /* ================= RENDER MULTIPLE CARDS ================= */
+  function renderReviews(direction = "right") {
+    reviewsList.innerHTML = "";
 
-    const card = document.createElement("div");
-    card.className = "review-card";
-    card.innerHTML = `
-      <img src="${r.imageUrl}" class="review-img"/>
-      <p>"${r.review}"</p>
-      <h4>${r.name}</h4>
-      <div class="stars-display">
-        ${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}
-      </div>
-    `;
+    for (let i = 0; i < VISIBLE; i++) {
+      const index = (currentIndex + i) % reviews.length;
+      const r = reviews[index];
 
-    reviewsList.appendChild(card);
+      const card = document.createElement("div");
+      card.className = "review-card";
+      card.innerHTML = `
+        <img src="${r.imageUrl}" class="review-img"/>
+        <p>"${r.review}"</p>
+        <h4>${r.name}</h4>
+        <div class="stars-display">
+          ${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}
+        </div>
+      `;
 
-    gsap.fromTo(
-      card,
-      {
-        x: direction === "right" ? 300 : -300,
-        opacity: 0
-      },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.5,
-        ease: "power3.out"
-      }
-    );
+      reviewsList.appendChild(card);
 
-    const oldCard = reviewsList.querySelector(
-      ".review-card:not(:last-child)"
-    );
-
-    if (oldCard) {
-      gsap.to(oldCard, {
-        x: direction === "right" ? -300 : 300,
+      gsap.from(card, {
+        x: direction === "right" ? 120 : -120,
         opacity: 0,
         duration: 0.4,
-        onComplete: () => oldCard.remove()
+        delay: i * 0.08,
+        ease: "power2.out"
       });
     }
-
-    card.addEventListener("click", nextReview);
   }
 
-  function nextReview() {
-    currentIndex = (currentIndex + 1) % reviews.length;
-    renderReview(currentIndex, "right");
-  }
+  /* ================= NEXT BUTTON ================= */
+  nextBtn?.addEventListener("click", () => {
+    currentIndex++;
+    if (currentIndex >= reviews.length) currentIndex = 0;
+    renderReviews("right");
+  });
+
+  /* ================= PREV BUTTON ================= */
+  prevBtn?.addEventListener("click", () => {
+    currentIndex--;
+    if (currentIndex < 0) currentIndex = reviews.length - 1;
+    renderReviews("left");
+  });
+
+  /* ================= AUTO SLIDE ================= */
+  setInterval(() => {
+    if (reviews.length > 0) {
+      currentIndex++;
+      if (currentIndex >= reviews.length) currentIndex = 0;
+      renderReviews("right");
+    }
+  }, 4000);
 
   if (reviewsList) loadReviews();
 });
@@ -149,10 +156,15 @@ const hamburger = document.getElementById("hamburger");
 const mobileNav = document.getElementById("mobileNav");
 const closeNav = document.getElementById("closeNav");
 
-hamburger?.addEventListener("click", () => mobileNav.classList.add("active"));
-closeNav?.addEventListener("click", () => mobileNav.classList.remove("active"));
+hamburger?.addEventListener("click", () =>
+  mobileNav.classList.add("active")
+);
 
-/* Gsap scrolling animation */
+closeNav?.addEventListener("click", () =>
+  mobileNav.classList.remove("active")
+);
+
+/* ================= SCROLL ANIMATION ================= */
 const sections = document.querySelectorAll(".section");
 
 const observer = new IntersectionObserver(
@@ -167,4 +179,3 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach(section => observer.observe(section));
-

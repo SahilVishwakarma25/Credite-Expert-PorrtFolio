@@ -5,6 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Credit Expert | Financial Advisor & Counsellor</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+            --bg-color: #fff5f0;
+            --header-color: #ff9e8c;
+            --column-color: #ffbaab;
+            --text-blue: #0000ff;
+            --text-dark-blue: #00008b;
+            --text-red: #d00000;
+        }
+     .table-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .pricing-container {
+            display: grid;
+            /* 1st column is wider, others equal. 
+               minmax ensures columns don't get too squished on mobile. */
+            grid-template-columns: 200px repeat(4, 160px); 
+            column-gap: 8px;
+            min-width: 840px; /* Prevents the grid from collapsing */
+        }
+
+        .cell {
+            padding: 15px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--column-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* STICKY FEATURE COLUMN: This stays visible while scrolling packages */
+        .feature-label {
+            position: sticky;
+            left: 0;
+            z-index: 10;
+            background-color: #fca898; /* Slightly darker to distinguish sticky column */
+            justify-content: flex-start;
+            text-align: left;
+            font-weight: 600;
+            padding-left: 15px;
+        }
+
+        .header {
+            background-color: var(--header-color);
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 20px 10px;
+            border-radius: 15px 15px 0 0;
+            border-bottom: none;
+            position: sticky;
+            top: 0;
+        }
+
+        /* Ensure sticky header stays above sticky column */
+        .header.feature-label {
+            z-index: 11;
+        }
+
+        .price {
+            color: var(--text-blue);
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .no { color: var(--text-red); font-weight: bold; font-size: 1.2rem; }
+        .yes { font-weight: 500; }
+
+        .note {
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 15px;
+            color: var(--text-dark-blue);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Desktop Adjustments */
+        @media (min-width: 900px) {
+            .pricing-container {
+                grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+                min-width: auto;
+            }
+            .table-wrapper {
+                overflow-x: hidden;
+            }
+        }
+
+    
+    
+
+    </style>
   </head>
   <body >
     <div style="position: fixed;top: 50%;">
@@ -62,8 +161,8 @@
    
     <section class="about-hero section" style="margin-top:6rem;display: flex;">
        <div class="logoDiv">
-           <a href=""> <img class="logo2" src="images/instagram_408758.png" alt=""></a>
-      <a href=""> <img class="logo2" src="images/youtube_3256012.png" alt=""></a>
+           <a href="https://www.instagram.com/hello.creditexpert_in?utm_source=qr&igsh=M2YwNnYzZmg1bGls"> <img class="logo2" src="images/instagram_408758.png" alt=""></a>
+      <a href="https://youtube.com/@hello.creditexpert_in?si=jWVbgiwhbPlq7nMo"> <img class="logo2" src="images/youtube_3256012.png" alt=""></a>
       <a href=""> <img class="logo2" src="images/facebook_3536394.png" alt=""></a>
 
         </div>
@@ -73,10 +172,12 @@
           At <span>Credit Expert</span>, we bridge the gap between financial
           hurdles and your dreams.
         </p>
-        <h4 class="contact-us" >Want to improve your Credit Score <br/> Contact Us Now !!  </h4>
+        <h4 class="contact-us" >Want to improve your Credit Score <br/> Contact Us Now !! <br>
+          <button style="height:17px;">Click Here</button>
+         </h4>
       </div>
       <div>
-        <img src="images/girl-image.avif" style="height:300px; margin-right: 10px;
+        <img src="images/girl-image-removebg-preview.png" style="height:300px; margin-right: 10px;
         border-radius: 20%;" alt="">
 
       </div>
@@ -187,21 +288,24 @@
       <h2>Our Team</h2>
       <div class="profile-cards">
         <div class="card">
-          <img
-            src="https://img.freepik.com/free-photo/young-handsome-man-wearing-casual-tshirt-blue-background-happy-face-smiling-with-crossed-arms-looking-camera-positive-person_839833-12963.jpg?semt=ais_hybrid&w=740&q=80"
+          <img class="center"
+          src="images/person2.jpeg"
           />
-          <h3>Name</h3>
-          <p>Position</p>
+          <h3>Name: Komal Pandey</h3>
+          <p>Position: Senior financial <br> Advisor</p>
+          <p>Qualification:Bachelor Of Commerce</p>
         </div>
         <div class="card">
-          <img src="profile2.jpg" />
-          <h3>Name</h3>
-          <p>Position</p>
+          <img src="images/person1.jpeg" class="center"/>
+          <h3>Name: Vaishali Dwivedi</h3>
+          <p>Position: Senior Manager (Credit Repair & CIBIL Services)</p>
+          <p>Qualification:Master Of Commerce</p>
         </div>
         <div class="card">
-          <img src="profile3.jpg" />
-          <h3>Name</h3>
-          <p>Position</p>
+          <img src="images/female-profile.png" class="center"/>
+          <h3>Name: Ruchi Upadhayay</h3>
+          <p>Position:Senior Sales Manager</p>
+          <p>Qualification:Bachelor Of Commerce</p>
         </div>
       </div>
     </section>
@@ -211,57 +315,77 @@
           Our service Subscription Plan for Individual <br />
           Credit Score Improvement
         </h1>
+        <div class="table-wrapper">
+        <div class="pricing-container">
+            <div class="cell header feature-label">FEATURE</div>
+            <div class="cell header">BASIC</div>
+            <div class="cell header">STANDARD</div>
+            <div class="cell header">ADVANCE</div>
+            <div class="cell header">PREMIUM</div>
 
-        <div class="pricing-grid">
-          <div class="plan-card">
-            <div class="plan-header">BASIC</div>
-            <div class="plan-body">
-              <p>Credit Health Checkup</p>
-              <p>One Account Issue Resolution</p>
-              <p class="not-included">X</p>
-              <p class="not-included">X</p>
-              <p class="not-included">X</p>
-              <p class="not-included">X</p>
-            </div>
-           
-          </div>
+            <div class="cell feature-label">Price</div>
+            <div class="cell price">6999/-</div>
+            <div class="cell price">12499/-</div>
+            <div class="cell price">18499/-</div>
+            <div class="cell price">29999/-</div>
 
-          <div class="plan-card">
-            <div class="plan-header">ADVANCE</div>
-            <div class="plan-body">
-              <p>Credit Health Checkup</p>
-              <p>
-                Multiple Account Issue Resolution <br />
-                <span>(only for 3 accounts)</span>
-              </p>
-              <p>Credit Score Improvement</p>
-              <p>6 Month Access Report</p>
-              <p class="not-included">X</p>
-              <p class="not-included">X</p>
-            </div>
-           
-          </div>
+            <div class="cell feature-label">Credit Health Checkup</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
 
-          <div class="plan-card">
-            <div class="plan-header">PREMIUM</div>
-            <div class="plan-body">
-              <p>Credit Health Checkup</p>
-              <p>
-                Multiple Account Issue Resolution <br />
-                <span>(more than 4 accounts)</span>
-              </p>
-              <p>Credit Score Improvement</p>
-              <p>6 Month Access Report</p>
-              <p>Senior Councillor</p>
-              <p>Fast Track Process</p>
-            </div>
-           
-          </div>
+            <div class="cell feature-label">1 Account Issue</div>
+            <div class="cell">1 Bureau</div>
+            <div class="cell">4 Bureau</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+
+            <div class="cell feature-label">Multiple Accounts (3)</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell">2 Bureau</div>
+            <div class="cell">4 Bureau</div>
+
+            <div class="cell feature-label">Score Improvement</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+
+            <div class="cell feature-label">6 Month Access</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+
+            <div class="cell feature-label">Senior Councillor</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+
+            <div class="cell feature-label">Fast Track</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
         </div>
+    </div>
+
+    <div class="note">
+        Note : Consultancy fees of Rs. 500 (includes report reading)
+    </div>
+        
+
+        
+             
+      
          <h1 class="main-title">
           Our service Subscription Plan for Commercials <br/>
           Credit Score Improvement
         </h1>
+        
       </div>
     </section>
     <section id="reviews" style="text-align: center">
