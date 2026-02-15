@@ -4,136 +4,182 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <style>
+        :root {
+            --bg-color: #fff5f0;
+            --header-color: #ff9e8c;
+            --column-color: #ffbaab;
+            --text-blue: #0000ff;
+            --text-dark-blue: #00008b;
+            --text-red: #d00000;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Container that allows horizontal scrolling on mobile */
+        .table-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scroll for iOS */
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .pricing-container {
+            display: grid;
+            /* 1st column is wider, others equal. 
+               minmax ensures columns don't get too squished on mobile. */
+            grid-template-columns: 200px repeat(4, 160px); 
+            column-gap: 8px;
+            min-width: 840px; /* Prevents the grid from collapsing */
+        }
+
+        .cell {
+            padding: 15px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--column-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* STICKY FEATURE COLUMN: This stays visible while scrolling packages */
+        .feature-label {
+            position: sticky;
+            left: 0;
+            z-index: 10;
+            background-color: #fca898; /* Slightly darker to distinguish sticky column */
+            justify-content: flex-start;
+            text-align: left;
+            font-weight: 600;
+            padding-left: 15px;
+        }
+
+        .header {
+            background-color: var(--header-color);
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 20px 10px;
+            border-radius: 15px 15px 0 0;
+            border-bottom: none;
+            position: sticky;
+            top: 0;
+        }
+
+        /* Ensure sticky header stays above sticky column */
+        .header.feature-label {
+            z-index: 11;
+        }
+
+        .price {
+            color: var(--text-blue);
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .no { color: var(--text-red); font-weight: bold; font-size: 1.2rem; }
+        .yes { font-weight: 500; }
+
+        .note {
+            width: 100%;
+            max-width: 1100px;
+            margin-top: 15px;
+            color: var(--text-dark-blue);
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        /* Desktop Adjustments */
+        @media (min-width: 900px) {
+            .pricing-container {
+                grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+                min-width: auto;
+            }
+            .table-wrapper {
+                overflow-x: hidden;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header class="navbar">
-  <div class="nav-container">
-    <img src="images/Gemini_Generated_Image_z98rd4z98rd4z98r.png" class="logo" />
-       <div style="color: rgb(0, 60, 116);font-size:x-large;font-weight: bolder ;
-       margin-left: 29px;"> Credit Expert</div>
-    <nav style="margin-right: 12rem;">
-      <ul class="nav-links" style="display:flex; flex-wrap: nowrap;">
-        <li><a href="#home-section" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About Us</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#plans" class="nav-link">Plans</a>
-          <ul class="dropdown-menu">
-        <li><a href="individiual.html"> Individual</a></li>
-        <li><a href="commercial.html">Commercial</a></li>
-      </ul>
-        </li>
-        <li><a href="blogs.html" class="nav-link">Blogs</a></li>
-      </ul>
-    </nav>
-   
-        <div class="hamburger" id="hamburger">
-  ☰
-</div>
-
-    
-  </div>
-</header>
-<!-- Mobile Navigation Drawer -->
-<div class="mobile-nav" id="mobileNav">
-  <span class="close-btn" id="closeNav">✖</span>
-
-  <a href="#home-section">Home</a>
-  <a href="#about">About Us</a>
-  <a href="#services">Services</a>
-
-  <div class="mobile-dropdown">
-    <span>Plans ▾</span>
-    <a href="individiual.html">Individual</a>
-    <a href="commercial.html" style="margin-left: 4rem;">Commercial</a>
-  </div>
-
-  <a href="blogs.html">Blogs</a>
-</div>
-
-    <section class="subscription-plan">
-      <div class="container">
-        <h1 class="main-title">
+   <h1 class="main-title">
           Our service Subscription Plan for Individual <br />
           Credit Score Improvement
         </h1>
 
-        <div class="pricing-grid">
-          <div class="plan-card">
-            <div class="plan-header">BASIC</div>
-            <div class="plan-body">
-              <p>Credit Health Checkup</p>
-              <p>One Account Issue Resolution</p>
-              <p class="not-included">X</p>
-              <p class="not-included">X</p>
-              <p class="not-included">X</p>
-              <p class="not-included">X</p>
-            </div>
-           
-          </div>
+    <div class="table-wrapper">
+      
+        <div class="pricing-container">
+            <div class="cell header feature-label">FEATURE</div>
+            <div class="cell header">BASIC</div>
+            <div class="cell header">STANDARD</div>
+            <div class="cell header">ADVANCE</div>
+            <div class="cell header">PREMIUM</div>
 
-          <div class="plan-card">
-            <div class="plan-header">ADVANCE</div>
-            <div class="plan-body">
-              <p>Credit Health Checkup</p>
-              <p>
-                Multiple Account Issue Resolution <br />
-                <span>(only for 3 accounts)</span>
-              </p>
-              <p>Credit Score Improvement</p>
-              <p>6 Month Access Report</p>
-              <p class="not-included">X</p>
-              <p class="not-included">X</p>
-            </div>
-           
-          </div>
+            <div class="cell feature-label">Price</div>
+            <div class="cell price">6999/-</div>
+            <div class="cell price">12499/-</div>
+            <div class="cell price">18499/-</div>
+            <div class="cell price">29999/-</div>
 
-          <div class="plan-card">
-            <div class="plan-header">PREMIUM</div>
-            <div class="plan-body">
-              <p>Credit Health Checkup</p>
-              <p>
-                Multiple Account Issue Resolution <br />
-                <span>(more than 4 accounts)</span>
-              </p>
-              <p>Credit Score Improvement</p>
-              <p>6 Month Access Report</p>
-              <p>Senior Councillor</p>
-              <p>Fast Track Process</p>
-            </div>
-           
-          </div>
+            <div class="cell feature-label">Credit Health Checkup</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+
+            <div class="cell feature-label">1 Account Issue</div>
+            <div class="cell">1 Bureau</div>
+            <div class="cell">4 Bureau</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+
+            <div class="cell feature-label">Multiple Accounts (3)</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell">2 Bureau</div>
+            <div class="cell">4 Bureau</div>
+
+            <div class="cell feature-label">Score Improvement</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+
+            <div class="cell feature-label">6 Month Access</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+
+            <div class="cell feature-label">Senior Councillor</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
+
+            <div class="cell feature-label">Fast Track</div>
+            <div class="cell no">x</div>
+            <div class="cell no">x</div>
+            <div class="cell yes">yes</div>
+            <div class="cell yes">yes</div>
         </div>
-      </div>
-    </section>
-     <footer style="display: flex;justify-content: space-between;">
-      <div>
-         <p>📞 +91 8446742340 | 📧 hello.creditexpert@gmail.com</p>
-      <p style="margin-top: 10px;margin-left: 10px;"><Address style="align-items: center; padding-bottom: 10px;"><img class="location" src="images/location_4305047.png" alt=""> Office No. 2,2nd Floor, <br>
-        A 1 Business Center,Sundar kapoor Compound, Behind Sunshine inn, western Express Higway,Nr.<br>
-         Dahisar Check Naka , Dahisar(E) , Mumbai - 400068
-       </Address></p>
+    </div>
 
-      </div>
-  
-     
-     
-       <div >
-        <h3 class="Follow" style="font-size:x-large;margin-bottom: 10px;">Follow Us On Social Media</h3>
-        <div>
-           <a href=""> <img class="logo2" src="images/instagram_408758.png" alt=""></a>
-      <a href=""> <img class="logo2" src="images/youtube_3256012.png" alt=""></a>
-      <a href=""> <img class="logo2" src="images/facebook_3536394.png" alt=""></a>
+    <div class="note">
+        Note : Consultancy fees of Rs. 500 (includes report reading)
+    </div>
 
-        </div>
-
-
-           
-     
-
-       </div>
-    </footer>
-      <script defer src="script.js"></script>
-    
 </body>
 </html>

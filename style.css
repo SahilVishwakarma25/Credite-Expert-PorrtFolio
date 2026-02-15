@@ -153,6 +153,7 @@ section {
 }
 
 .profile-cards {
+  overflow-x: auto;
   display: flex;
   justify-content: center;
   gap: 20px;
