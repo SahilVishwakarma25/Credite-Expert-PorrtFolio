@@ -722,6 +722,12 @@ body {
     width: 12rem;
     margin: 40px auto;
   }
+  .profile-cards {
+  overflow-x: auto;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
 }
 
 #reviewForm {
