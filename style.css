@@ -262,6 +262,7 @@ footer {
   width: 40%;
   margin: 40px auto;
   border-radius: 10px;
+  padding-bottom: 7px;
 }
 .nav-links li {
   margin: 0 30px;
@@ -720,7 +721,7 @@ body {
   .contact-us {
     background-color: rgb(255, 255, 255);
     color: black;
-    width: 12rem;
+    width: 17rem;
     margin: 40px auto;
   }
   .profile-cards {
