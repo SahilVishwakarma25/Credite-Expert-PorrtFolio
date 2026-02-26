@@ -123,6 +123,7 @@ header {
 
 .logo {
   position: absolute;
+  
   left: 10px;
   height: 70px;
   border-radius: 50%;
@@ -845,6 +846,11 @@ body {
   text-align: center;
   flex-shrink: 0;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.review-card p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .review-img {

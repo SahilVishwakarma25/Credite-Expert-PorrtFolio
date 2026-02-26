@@ -9,11 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
 
-  const API_URL = "http://localhost:5000/reviews";
+  /* ✅ PRODUCTION BACKEND URL */
+  const API_URL =
+    "https://credite-expert-porrtfolio-server-1.onrender.com/reviews";
 
   let reviews = [];
   let currentIndex = 0;
-  const VISIBLE = 3; // how many cards visible
+  const VISIBLE = 3;
 
   /* ================= TOAST ================= */
   function showToast(message, type = "success") {
@@ -68,14 +70,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!res.ok) throw new Error("Upload failed");
 
-        showToast("✅ Review uploaded!");
+        showToast("✅ Review uploaded successfully!");
         form.reset();
         stars.forEach(s => s.classList.remove("filled"));
-        fileLabel.textContent = "Upload Image";
+        if (fileLabel) fileLabel.textContent = "Upload Image";
 
         loadReviews();
       } catch (err) {
-        showToast("❌ " + err.message, "error");
+        console.error(err);
+        showToast("❌ Failed to upload review", "error");
       }
     });
   }
@@ -84,28 +87,42 @@ document.addEventListener("DOMContentLoaded", () => {
   async function loadReviews() {
     try {
       const res = await fetch(API_URL);
+
+      if (!res.ok) throw new Error("Failed to fetch reviews");
+
       reviews = await res.json();
-      if (!reviews.length) return;
+
+      if (!reviews.length) {
+        reviewsList.innerHTML = "<p>No reviews yet.</p>";
+        return;
+      }
 
       currentIndex = 0;
       renderReviews("right");
     } catch (err) {
-      console.error(err);
+      console.error("Error loading reviews:", err);
     }
   }
 
-  /* ================= RENDER MULTIPLE CARDS ================= */
+  /* ================= RENDER REVIEWS ================= */
   function renderReviews(direction = "right") {
+    if (!reviews.length) return;
+
     reviewsList.innerHTML = "";
 
-    for (let i = 0; i < VISIBLE; i++) {
+    for (let i = 0; i < Math.min(VISIBLE, reviews.length); i++) {
       const index = (currentIndex + i) % reviews.length;
       const r = reviews[index];
 
       const card = document.createElement("div");
       card.className = "review-card";
+
       card.innerHTML = `
-        <img src="${r.imageUrl}" class="review-img"/>
+        ${
+          r.imageUrl
+            ? `<img src="${r.imageUrl}" class="review-img" alt="Review Image"/>`
+            : ""
+        }
         <p>"${r.review}"</p>
         <h4>${r.name}</h4>
         <div class="stars-display">
@@ -115,35 +132,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
       reviewsList.appendChild(card);
 
-      gsap.from(card, {
-        x: direction === "right" ? 120 : -120,
-        opacity: 0,
-        duration: 0.4,
-        delay: i * 0.08,
-        ease: "power2.out"
-      });
+      if (typeof gsap !== "undefined") {
+        gsap.from(card, {
+          x: direction === "right" ? 120 : -120,
+          opacity: 0,
+          duration: 0.4,
+          delay: i * 0.08,
+          ease: "power2.out"
+        });
+      }
     }
   }
 
   /* ================= NEXT BUTTON ================= */
   nextBtn?.addEventListener("click", () => {
-    currentIndex++;
-    if (currentIndex >= reviews.length) currentIndex = 0;
+    if (!reviews.length) return;
+    currentIndex = (currentIndex + 1) % reviews.length;
     renderReviews("right");
   });
 
   /* ================= PREV BUTTON ================= */
   prevBtn?.addEventListener("click", () => {
-    currentIndex--;
-    if (currentIndex < 0) currentIndex = reviews.length - 1;
+    if (!reviews.length) return;
+    currentIndex =
+      (currentIndex - 1 + reviews.length) % reviews.length;
     renderReviews("left");
   });
 
   /* ================= AUTO SLIDE ================= */
   setInterval(() => {
     if (reviews.length > 0) {
-      currentIndex++;
-      if (currentIndex >= reviews.length) currentIndex = 0;
+      currentIndex = (currentIndex + 1) % reviews.length;
       renderReviews("right");
     }
   }, 4000);

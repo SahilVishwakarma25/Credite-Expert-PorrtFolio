@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --accent-gold: #d4af37;
+            --text-gray: #333;
+            --highlight-orange: #d97706;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            background-color: #fcfcfc;
+            color: var(--text-gray);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Section Headings */
+        .section-title {
+            text-align: center;
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .underline {
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-gold);
+            margin: 0 auto 40px auto;
+        }
+
+        /* Financial Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--primary-blue);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .check-icon {
+            color: var(--text-gray);
+            margin-right: 15px;
+            font-size: 0.9rem;
+        }
+
+        .service-card span {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #222;
+        }
+
+        /* "Also Provide" Section */
+        .also-provide-list {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .provide-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .provide-icon {
+            width: 60px;
+            font-size: 2.5rem;
+            margin-right: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Specific icon colors to match image */
+        .icon-meter { color: #f87171; }
+        .icon-search { color: #60a5fa; }
+        .icon-loan { color: #fbbf24; }
+        .icon-health { color: #ec4899; }
+        .icon-funds { color: #fbbf24; }
+
+        .provide-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .highlight {
+            color: var(--highlight-orange);
+        }
+
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .provide-item { flex-direction: column; text-align: center; }
+            .provide-icon { margin-right: 0; margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="section-title">Our Financial Services</h2>
+    <div class="underline"></div>
+    
+    <div class="services-grid">
+        <div class="service-card">
+            <i class="fa-solid fa-check check-icon"></i>
+            <span>CIBIL Rectification</span>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-check check-icon"></i>
+            <span>Post Write-off / Settlement Removal</span>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-check check-icon"></i>
+            <span>Suit Filed / Wilful Default Correction</span>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-check check-icon"></i>
+            <span>CMS Rank Improvement</span>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-check check-icon"></i>
+            <span>MSME Report Analysis</span>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-check check-icon"></i>
+            <span>Credit Dispute Resolution</span>
+        </div>
+    </div>
+
+    <h2 class="section-title">Also Provide</h2>
+    <div class="underline"></div>
+
+    <div class="also-provide-list">
+        <div class="provide-item">
+            <div class="provide-icon icon-meter"><i class="fa-solid fa-gauge-high"></i></div>
+            <div class="provide-text">
+                Credit Bureau Correction ( <span class="highlight">Cibil, Experian, Crif Highmark, Equifax</span> )
+            </div>
+        </div>
+
+        <div class="provide-item">
+            <div class="provide-icon icon-search"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <div class="provide-text">
+                We Provide Counseling for <span class="highlight">Individual / Company Credit Report</span>
+            </div>
+        </div>
+
+        <div class="provide-item">
+            <div class="provide-icon icon-loan"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <div class="provide-text">Home Loan & Mortgage Loan</div>
+        </div>
+
+        <div class="provide-item">
+            <div class="provide-icon icon-health"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="provide-text">Life Insurance & Health Insurance</div>
+        </div>
+
+        <div class="provide-item">
+            <div class="provide-icon icon-funds"><i class="fa-solid fa-sack-dollar"></i></div>
+            <div class="provide-text">Mutual Funds</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
