@@ -120,6 +120,19 @@ header {
   text-align: center;
   padding: 10px 20px;
 }
+body{
+ 
+
+}
+
+.whatsapp-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  height: 70px;
+  border-radius: 50%;
+  z-index: 9999;
+}
 
 .logo {
   position: absolute;
